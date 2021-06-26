@@ -8,19 +8,21 @@ public class Developer {
     Integer id;
     String firstName;
     String lastName;
+    Team team;
     List<Skill> skills;
 
-    public Developer(Integer id, String firstName, String lastName) {
+    public Developer(Integer id, String firstName, String lastName, Team team) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.skills = new ArrayList<>();
+        this.team = team;
     }
 
-    public Developer(Integer id, String firstName, String lastName, List<Skill> skills) {
+    public Developer(Integer id, String firstName, String lastName, Team team, List<Skill> skills) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.team = team;
         this.skills = skills;
     }
 
@@ -46,6 +48,14 @@ public class Developer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     public List<Skill> getSkills() {

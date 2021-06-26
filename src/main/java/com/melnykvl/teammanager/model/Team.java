@@ -6,11 +6,13 @@ public class Team {
 
     Integer id;
     String name;
+    TeamStatus teamStatus;
     List<Developer> developers;
 
-    public Team(Integer id, String name, List<Developer> developers) {
+    public Team(Integer id, String name, TeamStatus teamStatus, List<Developer> developers) {
         this.id = id;
         this.name = name;
+        this.teamStatus = teamStatus;
         this.developers = developers;
     }
 
@@ -28,6 +30,14 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TeamStatus getTeamStatus() {
+        return teamStatus;
+    }
+
+    public void setTeamStatus(TeamStatus teamStatus) {
+        this.teamStatus = teamStatus;
     }
 
     public List<Developer> getDevelopers() {

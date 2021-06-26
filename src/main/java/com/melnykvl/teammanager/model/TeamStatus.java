@@ -1,6 +1,6 @@
 package com.melnykvl.teammanager.model;
 
-enum TeamStatus {
+public enum TeamStatus {
     ACTIVE,
     DELETED
 }
