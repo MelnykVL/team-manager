@@ -7,12 +7,24 @@ import com.melnykvl.teammanager.repository.TeamRepository;
 import java.net.URISyntaxException;
 
 public class Main {
-    public static void main(String[] args) throws URISyntaxException {
+    public static void main(String[] args) {
 
 
-        Team team = new Team(2, "DOGS", TeamStatus.DELETED, null);
+        //Team team = new Team("Team-3", TeamStatus.DELETED, null);
         TeamRepository teamRepository = new TeamRepository();
-        teamRepository.add(team);
+        System.out.println(teamRepository.getAll());
+
+        Team team = teamRepository.get(5);
+//        team.setName("Some name");
+//        team.setTeamStatus(TeamStatus.ACTIVE);
+//        teamRepository.update(team);
+//        for(int i = 0; i < 10; i++){
+//            teamRepository.add(new Team("Team-" + (i+1), TeamStatus.DELETED, null));
+//        }
+        teamRepository.remove(team);
+
+        System.out.println(teamRepository.getAll());
+
 
     }
 }

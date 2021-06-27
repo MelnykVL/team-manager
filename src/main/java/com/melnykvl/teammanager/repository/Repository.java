@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Repository<T, ID> {
 
-    Gson g = new Gson();
+    Gson gson = new Gson();
 
     T get(ID id);
     void add(T t);

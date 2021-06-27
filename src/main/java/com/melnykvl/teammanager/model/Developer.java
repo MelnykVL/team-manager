@@ -5,21 +5,22 @@ import java.util.List;
 
 public class Developer {
 
-    Integer id;
+    private static int counter = 0;
+    private Integer id;
     String firstName;
     String lastName;
     Team team;
     List<Skill> skills;
 
-    public Developer(Integer id, String firstName, String lastName, Team team) {
-        this.id = id;
+    public Developer(String firstName, String lastName, Team team) {
+        this.id = ++counter;
         this.firstName = firstName;
         this.lastName = lastName;
         this.team = team;
     }
 
-    public Developer(Integer id, String firstName, String lastName, Team team, List<Skill> skills) {
-        this.id = id;
+    public Developer(String firstName, String lastName, Team team, List<Skill> skills) {
+        this.id = ++counter;
         this.firstName = firstName;
         this.lastName = lastName;
         this.team = team;
@@ -28,10 +29,6 @@ public class Developer {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getFirstName() {
