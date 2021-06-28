@@ -13,6 +13,4 @@ public interface Repository<T, ID> {
     void update(T t);
     void remove(T t);
 
-    List<T> getAll();
-
 }

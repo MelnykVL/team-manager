@@ -5,8 +5,6 @@ import com.melnykvl.teammanager.model.TeamStatus;
 import com.melnykvl.teammanager.repository.JavaIOTeamRepositoryImpl;
 import com.melnykvl.teammanager.repository.TeamRepository;
 
-import java.net.URISyntaxException;
-
 public class Main {
     public static void main(String[] args) {
 
