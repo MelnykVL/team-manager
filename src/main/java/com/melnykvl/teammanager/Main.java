@@ -2,6 +2,7 @@ package com.melnykvl.teammanager;
 
 import com.melnykvl.teammanager.model.Team;
 import com.melnykvl.teammanager.model.TeamStatus;
+import com.melnykvl.teammanager.repository.JavaIOTeamRepositoryImpl;
 import com.melnykvl.teammanager.repository.TeamRepository;
 
 import java.net.URISyntaxException;
@@ -11,7 +12,7 @@ public class Main {
 
 
         //Team team = new Team("Team-3", TeamStatus.DELETED, null);
-        TeamRepository teamRepository = new TeamRepository();
+        TeamRepository teamRepository = new JavaIOTeamRepositoryImpl();
         System.out.println(teamRepository.getAll());
 
         Team team = teamRepository.get(5);
