@@ -103,10 +103,42 @@ public class DeveloperController {
             addSkill(dev);
         else if (command.equalsIgnoreCase("remove skill"))
             removeSkill(dev);
+        else if (command.equalsIgnoreCase("change fn"))
+            changeFirstName(dev);
+        else if (command.equalsIgnoreCase("change ln"))
+            changeLastName(dev);
         else if (command.equalsIgnoreCase("delete"))
             deleteObj(dev);
         else
             System.out.println("Команда не найдена!");
+
+    }
+
+    private void changeLastName(Developer dev) {
+
+        Scanner scan = new Scanner(System.in);
+        String lastName = "";
+
+        System.out.print("Введите новую фамилию разработчика: ");
+        lastName = scan.nextLine();
+
+        dev.setLastName(lastName);
+
+        dr.update(dev);
+
+    }
+
+    private void changeFirstName(Developer dev) {
+
+        Scanner scan = new Scanner(System.in);
+        String firstName = "";
+
+        System.out.print("Введите новое имя разработчика: ");
+        firstName = scan.nextLine();
+
+        dev.setFirstName(firstName);
+
+        dr.update(dev);
 
     }
 

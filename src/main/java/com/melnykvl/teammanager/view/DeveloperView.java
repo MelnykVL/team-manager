@@ -43,6 +43,8 @@ public class DeveloperView {
         System.out.println("Действия над объектом:");
         System.out.println("\tadd skill (добавить навык)");
         System.out.println("\tremove skill (удалить навык)");
+        System.out.println("\tchange fn (изменить имя)");
+        System.out.println("\tchange ln (изменить фамилию)");
         System.out.println("\tdelete (удалить объект)");
     }
 
