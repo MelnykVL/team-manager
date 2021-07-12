@@ -13,16 +13,16 @@ public class Main {
         TeamRepository teamRepository = new JavaIOTeamRepositoryImpl();
         System.out.println(teamRepository.getAll());
 
-        Team team = teamRepository.get(5);
-//        team.setName("Some name");
-//        team.setTeamStatus(TeamStatus.ACTIVE);
-//        teamRepository.update(team);
+        Team team = teamRepository.getById(5);
+        team.setName("Some name");
+        team.setTeamStatus(TeamStatus.ACTIVE);
+        teamRepository.update(team);
 //        for(int i = 0; i < 10; i++){
 //            teamRepository.add(new Team("Team-" + (i+1), TeamStatus.DELETED, null));
 //        }
-        teamRepository.remove(team);
+//        teamRepository.remove(team);
 
-        System.out.println(teamRepository.getAll());
+//        System.out.println(teamRepository.getAll());
 
 
     }

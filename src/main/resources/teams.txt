@@ -1,8 +1,0 @@
-{"id":1,"name":"Team-1","teamStatus":"DELETED"}
-{"id":2,"name":"Team-2","teamStatus":"DELETED"}
-{"id":3,"name":"Team-3","teamStatus":"DELETED"}
-{"id":4,"name":"Team-4","teamStatus":"DELETED"}
-{"id":6,"name":"Team-6","teamStatus":"DELETED"}
-{"id":7,"name":"Team-7","teamStatus":"DELETED"}
-{"id":8,"name":"Team-8","teamStatus":"DELETED"}
-{"id":9,"name":"Some name","teamStatus":"ACTIVE"}

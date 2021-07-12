@@ -23,22 +23,22 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     }
 
     @Override
-    public Developer get(Integer integer) {
+    public Developer getById(Integer integer) {
         return null;
     }
 
     @Override
-    public void add(Developer developer) {
-
+    public Developer add(Developer developer) {
+        return null;
     }
 
     @Override
-    public void update(Developer developer) {
-
+    public Developer update(Developer developer) {
+        return null;
     }
 
     @Override
-    public void remove(Developer developer) {
+    public void removeById(Integer integer) {
 
     }
 
@@ -46,5 +46,4 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     public List<Developer> getAll() {
         return null;
     }
-
 }

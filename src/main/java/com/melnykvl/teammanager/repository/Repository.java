@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface Repository<T, ID> {
 
-    Gson gson = new Gson();
+    T getById(ID id);
+    T add(T t);
+    T update(T t);
+    void removeById(ID id);
 
-    T get(ID id);
-    void add(T t);
-    void update(T t);
-    void remove(T t);
+    List<T> getAll();
 
 }

@@ -4,10 +4,11 @@ import com.melnykvl.teammanager.model.Skill;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
-    private final File file = new File("src/main/resources/skills.txt");
+    private final File file = new File("src/main/resources/skills.json");
 
     public JavaIOSkillRepositoryImpl() {
 
@@ -22,23 +23,27 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public Skill get(Integer integer) {
+    public Skill getById(Integer integer) {
         return null;
     }
 
     @Override
-    public void add(Skill skill) {
+    public Skill add(Skill skill) {
+        return null;
+    }
+
+    @Override
+    public Skill update(Skill skill) {
+        return null;
+    }
+
+    @Override
+    public void removeById(Integer integer) {
 
     }
 
     @Override
-    public void update(Skill skill) {
-
+    public List<Skill> getAll() {
+        return null;
     }
-
-    @Override
-    public void remove(Skill skill) {
-
-    }
-
 }

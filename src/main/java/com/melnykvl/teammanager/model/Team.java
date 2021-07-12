@@ -6,14 +6,13 @@ import java.util.List;
 
 public class Team {
 
-    public static int counter;
+
     private Integer id;
     private String name;
     private TeamStatus teamStatus;
     private List<Developer> developers;
 
     public Team(String name, TeamStatus teamStatus, List<Developer> developers) {
-        this.id = ++counter;
         this.name = name;
         this.teamStatus = teamStatus;
         this.developers = developers;
@@ -21,6 +20,10 @@ public class Team {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

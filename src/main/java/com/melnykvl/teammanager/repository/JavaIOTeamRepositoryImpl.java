@@ -1,15 +1,21 @@
 package com.melnykvl.teammanager.repository;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.melnykvl.teammanager.model.Team;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class JavaIOTeamRepositoryImpl implements TeamRepository {
 
-    private final File file = new File("src/main/resources/teams.txt");
-    private List<Team> teamList = new ArrayList<>();
+    private static int counter;
+    private Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private final File file = new File("src/main/resources/teams.json");
 
     public JavaIOTeamRepositoryImpl() {
 
@@ -20,93 +26,84 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
                 e.printStackTrace();
             }
         } else {
-            fillList();
-            Team.counter = teamList.size() != 0 ? teamList.get(teamList.size()-1).getId() : 0;
-
+            List<Team> list = getAll();
+            counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
         }
 
     }
 
     @Override
-    public Team get(Integer id) {
-        return teamList.stream().filter(n -> n.getId() == id).findAny().orElse(null);
+    public Team getById(Integer id) {
+        return getAll().stream().filter(n -> n.getId() == id).findAny().orElse(null);
     }
 
     @Override
-    public void add(Team model) {
+    public Team add(Team team) {
 
-        teamList.add(model);
-        write(model);
+        team.setId(++counter);
+
+        List<Team> teamList = getAll();
+
+        teamList.add(team);
+
+        rewriteFile(teamList);
+
+        return team;
+    }
+
+    @Override
+    public Team update(Team team) {
+
+        List<Team> list = getAll();
+
+        Team temp = list.stream().filter(n -> n.getId() == team.getId()).findAny().get();
+
+        list.set(list.indexOf(temp), team);
+
+        rewriteFile(list);
+
+        return team;
 
     }
 
     @Override
-    public void update(Team model) {
-        teamList.set(teamList.indexOf(model), model);
-        rewrite(teamList);
-    }
+    public void removeById(Integer id) {
 
-    @Override
-    public void remove(Team model) {
-        if (teamList.remove(model)) rewrite(teamList);
+        List<Team> list = getAll();
+
+        for (Team team : list)
+            if (team.getId() == id)
+                list.remove(team);
+
+        rewriteFile(list);
+
     }
 
     @Override
     public List<Team> getAll() {
-        return teamList;
-    }
 
-    private void fillList() {
+        Optional<List<Team>> opt = Optional.empty();
 
-        try (InputStream is = new FileInputStream(file);
-             Reader r = new InputStreamReader(is);
-             BufferedReader br = new BufferedReader(r)) {
+        try (Reader reader = Files.newBufferedReader(file.toPath())) {
 
-            //Type teamListType = new TypeToken<ArrayList<Team>>(){}.getType();
-
-            Team team = null;
-            String line = null;
-
-            while((line = br.readLine()) != null){
-
-                team = gson.fromJson(line, Team.class);
-                teamList.add(team);
-
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    private void write(Team model){
-
-        try (Writer w = new FileWriter(file, true);
-             BufferedWriter bw = new BufferedWriter(w)){
-
-            bw.append(gson.toJson(model) + System.lineSeparator());
+            opt = Optional.ofNullable(gson.fromJson(reader, new TypeToken<ArrayList<Team>>(){}.getType()));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        return opt.orElse(new ArrayList<>());
+
     }
 
-    private void rewrite(List<Team> list){
+    private void rewriteFile(List<Team> teamList) {
 
-        file.delete();
+        try (Writer writer = Files.newBufferedWriter(file.toPath())) {
 
-        try {
-            file.createNewFile();
+            gson.toJson(teamList, writer);
+
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        for(Team model : list){
-            write(model);
         }
 
     }

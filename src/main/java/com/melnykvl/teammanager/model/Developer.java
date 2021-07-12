@@ -7,10 +7,10 @@ public class Developer {
 
     private static int counter = 0;
     private Integer id;
-    String firstName;
-    String lastName;
-    Team team;
-    List<Skill> skills;
+    private String firstName;
+    private String lastName;
+    private Team team;
+    private List<Skill> skills;
 
     public Developer(String firstName, String lastName, Team team) {
         this.id = ++counter;
