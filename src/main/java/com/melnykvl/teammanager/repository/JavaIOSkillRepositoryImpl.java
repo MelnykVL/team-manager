@@ -42,9 +42,11 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     @Override
     public Skill add(Skill skill) {
 
-        skill.setId(++counter);
-
         List<Skill> list = getAll();
+
+        counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
+
+        skill.setId(++counter);
 
         list.add(skill);
 

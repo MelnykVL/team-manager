@@ -8,24 +8,22 @@ public class Developer {
     private Integer id;
     private String firstName;
     private String lastName;
-    private Team team;
+    //private Team team;
     private List<Skill> skills;
 
     public Developer() {
         this.skills = new ArrayList<>();
     }
 
-    public Developer(String firstName, String lastName, Team team) {
+    public Developer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.team = team;
         skills = new ArrayList<>();
     }
 
-    public Developer(String firstName, String lastName, Team team, List<Skill> skills) {
+    public Developer(String firstName, String lastName, List<Skill> skills) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.team = team;
         this.skills = skills;
     }
 
@@ -53,13 +51,13 @@ public class Developer {
         this.lastName = lastName;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
+//    public Team getTeam() {
+//        return team;
+//    }
+//
+//    public void setTeam(Team team) {
+//        this.team = team;
+//    }
 
     public List<Skill> getSkills() {
         return skills;
@@ -73,13 +71,19 @@ public class Developer {
         this.skills.add(model);
     }
 
+    public void removeSkill(Integer id) {
+
+        for (Skill s : skills)
+            if (s.getId() == id)
+                this.skills.remove(s);
+
+    }
+
     @Override
     public String toString() {
-        return "Developer{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", skills=" + skills +
-                '}';
+        return "Разработчик ID-" + id + ':' +
+                "\n\tИмя: " + firstName + ';' +
+                "\n\tФамилия: " + lastName + ';' +
+                ((skills.size() != 0) ? "\n\tНавыки: " + skills : "");
     }
 }

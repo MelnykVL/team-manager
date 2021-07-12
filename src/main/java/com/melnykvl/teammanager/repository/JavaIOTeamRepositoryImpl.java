@@ -26,9 +26,6 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            List<Team> list = getAll();
-            counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
         }
 
     }
@@ -41,9 +38,11 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
     @Override
     public Team add(Team team) {
 
-        team.setId(++counter);
-
         List<Team> list = getAll();
+
+        counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
+
+        team.setId(++counter);
 
         list.add(team);
 

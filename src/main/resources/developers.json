@@ -70,14 +70,17 @@
   },
   {
     "id": 4,
-    "firstName": "First name-4",
-    "lastName": "Last name-4",
-    "skills": []
-  },
-  {
-    "id": 5,
-    "firstName": "First name-5",
-    "lastName": "Last name-5",
-    "skills": []
+    "firstName": "Vladko",
+    "lastName": "Melnyk",
+    "skills": [
+      {
+        "id": 1,
+        "name": "Java 8"
+      },
+      {
+        "id": 5,
+        "name": "PostgreSQL"
+      }
+    ]
   }
 ]

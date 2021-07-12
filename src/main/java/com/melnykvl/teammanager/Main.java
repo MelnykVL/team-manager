@@ -1,45 +1,41 @@
 package com.melnykvl.teammanager;
 
-import com.melnykvl.teammanager.model.Developer;
-import com.melnykvl.teammanager.model.Skill;
-import com.melnykvl.teammanager.model.Team;
-import com.melnykvl.teammanager.model.TeamStatus;
-import com.melnykvl.teammanager.repository.*;
+import com.melnykvl.teammanager.controller.DeveloperController;
+import com.melnykvl.teammanager.controller.SkillController;
+import com.melnykvl.teammanager.controller.TeamController;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        TeamController tc = new TeamController();
+        DeveloperController dc = new DeveloperController();
+        SkillController sc = new SkillController();
 
-        TeamRepository tr = new JavaIOTeamRepositoryImpl();
-        DeveloperRepository dr = new JavaIODeveloperRepositoryImpl();
-        SkillRepository sr = new JavaIOSkillRepositoryImpl();
+        String command = "";
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println(tr.getAll());
-        System.out.println(dr.getAll());
-        System.out.println(sr.getAll());
+        while (true) {
 
-        Team team = tr.getById(2);
-        team.setDevelopers(dr.getAll());
-        tr.update(team);
+            System.out.println("\n1 - перейти к командам");
+            System.out.println("2 - перейти к разработчикам");
+            System.out.println("3 - перейти к умениям");
+            System.out.println("exit - завершение программы");
 
-//        Developer dev = dr.getById(3);
-//        dev.addSkill(sr.getById(1));
-//        dev.addSkill(sr.getById(2));
-//        dev.addSkill(sr.getById(3));
-//        dev.addSkill(sr.getById(4));
-//        dev.addSkill(sr.getById(5));
-//        dr.update(dev);
+            System.out.print("Введите команду: ");
+            command = scan.nextLine();
 
-//        for(int i = 0; i < 5; i++){
-//            tr.add(new Team("Team-" + (i+1), TeamStatus.DELETED, null));
-//            dr.add(new Developer("First name-" + (i+1), "Last name-" + (i+1), null));
-//        }
-//
-//        sr.add(new Skill("Java 8"));
-//        sr.add(new Skill("Hibernate"));
-//        sr.add(new Skill("JUnit/Mockito"));
-//        sr.add(new Skill("Spring Framework"));
-//        sr.add(new Skill("PostgreSQL"));
+            if (command.equals("2"))
+                dc.execute();
+            else if (command.equals("3"))
+                sc.execute();
+            else if (command.equalsIgnoreCase("exit"))
+                return;
+            else
+                System.out.println("Команда не найдена");
+
+        }
 
     }
 }

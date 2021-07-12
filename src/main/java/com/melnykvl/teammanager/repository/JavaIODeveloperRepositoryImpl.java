@@ -29,9 +29,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            List<Developer> list = getAll();
-            counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
         }
 
     }
@@ -44,13 +41,15 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     @Override
     public Developer add(Developer developer) {
 
+        List<Developer> list = getAll();
+
+        counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
+
         developer.setId(++counter);
 
-        List<Developer> developerList = getAll();
+        list.add(developer);
 
-        developerList.add(developer);
-
-        rewriteFile(developerList);
+        rewriteFile(list);
 
         return developer;
 
@@ -105,9 +104,7 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     private void rewriteFile(List<Developer> list) {
 
         try (Writer writer = Files.newBufferedWriter(file.toPath())) {
-
             gson.toJson(list, writer);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
