@@ -29,16 +29,24 @@ public class DeveloperController {
         System.out.print("Введите команду: ");
         command = scan.nextLine();
 
-        if (command.equalsIgnoreCase("show"))
+        if (command.equalsIgnoreCase("show")) {
             dv.show();
-        else if (command.equalsIgnoreCase("get"))
+            execute();
+        } else if (command.equalsIgnoreCase("get")) {
             get();
-        else if (command.equalsIgnoreCase("create"))
+            execute();
+        } else if (command.equalsIgnoreCase("create")) {
             addDev();
-        else if (command.equalsIgnoreCase("delete"))
+            execute();
+        } else if (command.equalsIgnoreCase("delete")) {
             deleteObj();
-        else
+            execute();
+        } else if (command.equalsIgnoreCase("return")) {
+            return;
+        } else {
             System.out.println("Команда не найдена!");
+            execute();
+        }
 
     }
 
@@ -99,8 +107,6 @@ public class DeveloperController {
             deleteObj(dev);
         else
             System.out.println("Команда не найдена!");
-
-
 
     }
 

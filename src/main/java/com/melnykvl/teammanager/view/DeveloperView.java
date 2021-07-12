@@ -16,6 +16,7 @@ public class DeveloperView {
         System.out.println("\t2. get (перейти к разработчику по идентификатору)");
         System.out.println("\t3. create (создать разработчика)");
         System.out.println("\t4. delete (удалить разработчика по идентефикатору)");
+        System.out.println("\t5. return (вернуться в прошлое меню)");
     }
 
     public void show() {

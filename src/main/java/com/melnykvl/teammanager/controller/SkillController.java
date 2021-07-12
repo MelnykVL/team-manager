@@ -1,5 +1,6 @@
 package com.melnykvl.teammanager.controller;
 
+import com.melnykvl.teammanager.model.Developer;
 import com.melnykvl.teammanager.model.Skill;
 import com.melnykvl.teammanager.repository.JavaIOSkillRepositoryImpl;
 import com.melnykvl.teammanager.repository.SkillRepository;
@@ -20,25 +21,37 @@ public class SkillController {
         System.out.print("Введите команду: ");
         String command = scan.nextLine();
 
-        if (command.equalsIgnoreCase("show"))
+        if (command.equalsIgnoreCase("show")) {
             sv.show();
-        else if (command.equalsIgnoreCase("get"))
+            execute();
+        } else if (command.equalsIgnoreCase("get")) {
             get();
-        else if (command.equalsIgnoreCase("create"))
+            execute();
+        } else if (command.equalsIgnoreCase("create")) {
             addObject();
-        else if (command.equalsIgnoreCase("delete"))
-            removeObject();
-        else
+            execute();
+        } else if (command.equalsIgnoreCase("delete")) {
+            deleteObj();
+            execute();
+        } else if (command.equalsIgnoreCase("return")) {
+            return;
+        }else {
             System.out.println("Команда не найдена!");
+            execute();
+        }
 
     }
 
-    private void removeObject() {
+    private void deleteObj() {
 
         System.out.print("Введите id: ");
         int id = scan.nextInt();
 
         sr.removeById(id);
+    }
+
+    private void deleteObj(Skill skill) {
+        sr.removeById(skill.getId());
     }
 
     private void addObject() {
@@ -51,10 +64,47 @@ public class SkillController {
     }
 
     private void get() {
+        Scanner scan = new Scanner(System.in);
+
+        Skill skill;
+        String command = "";
+        int id;
+
 
         System.out.print("Введите id: ");
-        int id = scan.nextInt();
+        id = scan.nextInt();
+        skill = sr.getById(id);
+
         sv.show(id);
+
+        if (skill == null) return;
+
+        sv.showObjectActions();
+
+        System.out.print("Введите действия: ");
+        scan = new Scanner(System.in);
+        command = scan.nextLine();
+
+        if (command.equalsIgnoreCase("change name"))
+            changeName(skill);
+        else if (command.equalsIgnoreCase("delete"))
+            deleteObj(skill);
+        else
+            System.out.println("Команда не найдена!");
+
+    }
+
+    private void changeName(Skill skill) {
+
+        Scanner scan = new Scanner(System.in);
+        String name = "";
+
+        System.out.print("Введите новое имя навыка: ");
+        name = scan.nextLine();
+
+        skill.setName(name);
+
+        sr.update(skill);
 
     }
 

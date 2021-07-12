@@ -16,6 +16,7 @@ public class SkillView {
         System.out.println("\t2. get (перейти к навыку по идентификатору)");
         System.out.println("\t3. create (создать навык)");
         System.out.println("\t4. delete (удалить навык по идентефикатору)");
+        System.out.println("\t5. return (вернуться в прошлое меню)");
     }
 
     public void show() {
@@ -36,6 +37,12 @@ public class SkillView {
             System.out.println("Навыка с таким id не существует");
         }
 
+    }
+
+    public void showObjectActions() {
+        System.out.println("Действия над объектом:");
+        System.out.println("\tchange name (изменить имя навыка)");
+        System.out.println("\tdelete (удалить навык)");
     }
 
 }
