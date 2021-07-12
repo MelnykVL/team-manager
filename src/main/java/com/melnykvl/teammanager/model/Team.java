@@ -1,16 +1,24 @@
 package com.melnykvl.teammanager.model;
 
-import com.melnykvl.teammanager.repository.TeamRepository;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
-
 
     private Integer id;
     private String name;
     private TeamStatus teamStatus;
     private List<Developer> developers;
+
+    public Team() {
+        this.developers = new ArrayList<>();
+    }
+
+    public Team(String name, TeamStatus teamStatus) {
+        this.name = name;
+        this.teamStatus = teamStatus;
+        this.developers = new ArrayList<>();
+    }
 
     public Team(String name, TeamStatus teamStatus, List<Developer> developers) {
         this.name = name;

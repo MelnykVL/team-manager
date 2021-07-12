@@ -2,17 +2,19 @@ package com.melnykvl.teammanager.model;
 
 public class Skill {
 
-    private static int counter = 0;
     private Integer id;
     private String name;
 
     public Skill(String name) {
-        this.id = ++counter;
         this.name = name;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

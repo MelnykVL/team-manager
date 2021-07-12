@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "firstName": "First name-1",
+    "lastName": "Last name-1",
+    "skills": [
+      {
+        "id": 1,
+        "name": "Java 8"
+      },
+      {
+        "id": 2,
+        "name": "Hibernate"
+      },
+      {
+        "id": 3,
+        "name": "JUnit/Mockito"
+      },
+      {
+        "id": 5,
+        "name": "PostgreSQL"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "firstName": "First name-2",
+    "lastName": "Last name-2",
+    "skills": [
+      {
+        "id": 1,
+        "name": "Java 8"
+      },
+      {
+        "id": 3,
+        "name": "JUnit/Mockito"
+      },
+      {
+        "id": 5,
+        "name": "PostgreSQL"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "firstName": "First name-3",
+    "lastName": "Last name-3",
+    "skills": [
+      {
+        "id": 1,
+        "name": "Java 8"
+      },
+      {
+        "id": 2,
+        "name": "Hibernate"
+      },
+      {
+        "id": 3,
+        "name": "JUnit/Mockito"
+      },
+      {
+        "id": 4,
+        "name": "Spring Framework"
+      },
+      {
+        "id": 5,
+        "name": "PostgreSQL"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "firstName": "First name-4",
+    "lastName": "Last name-4",
+    "skills": []
+  },
+  {
+    "id": 5,
+    "firstName": "First name-5",
+    "lastName": "Last name-5",
+    "skills": []
+  }
+]

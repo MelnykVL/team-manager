@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.melnykvl.teammanager.model.Team;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +43,11 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
 
         team.setId(++counter);
 
-        List<Team> teamList = getAll();
+        List<Team> list = getAll();
 
-        teamList.add(team);
+        list.add(team);
 
-        rewriteFile(teamList);
+        rewriteFile(list);
 
         return team;
     }
@@ -71,9 +72,9 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
 
         List<Team> list = getAll();
 
-        for (Team team : list)
-            if (team.getId() == id)
-                list.remove(team);
+        Team temp = list.stream().filter(n -> n.getId() == id).findAny().orElse(null);
+
+        list.remove(temp);
 
         rewriteFile(list);
 
@@ -83,10 +84,11 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
     public List<Team> getAll() {
 
         Optional<List<Team>> opt = Optional.empty();
+        Type listTeamType = new TypeToken<ArrayList<Team>>(){}.getType();
 
         try (Reader reader = Files.newBufferedReader(file.toPath())) {
 
-            opt = Optional.ofNullable(gson.fromJson(reader, new TypeToken<ArrayList<Team>>(){}.getType()));
+            opt = Optional.ofNullable(gson.fromJson(reader, listTeamType));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -96,11 +98,11 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
 
     }
 
-    private void rewriteFile(List<Team> teamList) {
+    private void rewriteFile(List<Team> list) {
 
         try (Writer writer = Files.newBufferedWriter(file.toPath())) {
 
-            gson.toJson(teamList, writer);
+            gson.toJson(list, writer);
 
         } catch (IOException e) {
             e.printStackTrace();
