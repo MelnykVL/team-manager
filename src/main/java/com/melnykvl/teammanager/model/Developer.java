@@ -81,7 +81,7 @@ public class Developer {
 
     @Override
     public String toString() {
-        return "Разработчик ID-" + id + ':' +
+        return "\nРазработчик ID-" + id + ':' +
                 "\n\tИмя: " + firstName + ';' +
                 "\n\tФамилия: " + lastName + ';' +
                 ((skills.size() != 0) ? "\n\tНавыки: " + skills : "");

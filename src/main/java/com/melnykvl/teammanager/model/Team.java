@@ -62,13 +62,19 @@ public class Team {
         this.developers.add(model);
     }
 
+    public void removeDeveloper(Integer id) {
+
+        for (Developer d : developers)
+            if (d.getId() == id)
+                this.developers.remove(d);
+
+    }
+
     @Override
     public String toString() {
-        return "Team{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", teamStatus=" + teamStatus +
-                ", developers=" + developers +
-                '}';
+        return "\nКоманда ID-" + id +
+                ": Название = '" + name + '\'' +
+                "; Статус = " + teamStatus +
+                "; Члены команды:" + developers;
     }
 }

@@ -18,7 +18,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("\n1 - перейти к командам");
+            System.out.println("\n1 - перейти к командам разработчиков");
             System.out.println("2 - перейти к разработчикам");
             System.out.println("3 - перейти к умениям");
             System.out.println("exit - завершение программы");
@@ -26,7 +26,9 @@ public class Main {
             System.out.print("Введите команду: ");
             command = scan.nextLine();
 
-            if (command.equals("2"))
+            if (command.equals("1"))
+                tc.execute();
+            else if (command.equals("2"))
                 dc.execute();
             else if (command.equals("3"))
                 sc.execute();

@@ -1,6 +1,5 @@
 package com.melnykvl.teammanager.controller;
 
-import com.melnykvl.teammanager.model.Developer;
 import com.melnykvl.teammanager.model.Skill;
 import com.melnykvl.teammanager.repository.JavaIOSkillRepositoryImpl;
 import com.melnykvl.teammanager.repository.SkillRepository;
@@ -21,6 +20,11 @@ public class SkillController {
         System.out.print("Введите команду: ");
         String command = scan.nextLine();
 
+        menu(command);
+
+    }
+
+    private void menu(String command) {
         if (command.equalsIgnoreCase("show")) {
             sv.show();
             execute();
@@ -30,8 +34,8 @@ public class SkillController {
         } else if (command.equalsIgnoreCase("create")) {
             addObject();
             execute();
-        } else if (command.equalsIgnoreCase("delete")) {
-            deleteObj();
+        } else if (command.equalsIgnoreCase("remove")) {
+            removeObj();
             execute();
         } else if (command.equalsIgnoreCase("return")) {
             return;
@@ -39,10 +43,9 @@ public class SkillController {
             System.out.println("Команда не найдена!");
             execute();
         }
-
     }
 
-    private void deleteObj() {
+    private void removeObj() {
 
         System.out.print("Введите id: ");
         int id = scan.nextInt();
@@ -50,7 +53,7 @@ public class SkillController {
         sr.removeById(id);
     }
 
-    private void deleteObj(Skill skill) {
+    private void removeObj(Skill skill) {
         sr.removeById(skill.getId());
     }
 
@@ -85,13 +88,17 @@ public class SkillController {
         scan = new Scanner(System.in);
         command = scan.nextLine();
 
+        menuForObj(skill, command);
+
+    }
+
+    private void menuForObj(Skill skill, String command) {
         if (command.equalsIgnoreCase("change name"))
             changeName(skill);
-        else if (command.equalsIgnoreCase("delete"))
-            deleteObj(skill);
+        else if (command.equalsIgnoreCase("remove"))
+            removeObj(skill);
         else
             System.out.println("Команда не найдена!");
-
     }
 
     private void changeName(Skill skill) {

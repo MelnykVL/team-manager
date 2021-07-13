@@ -29,6 +29,12 @@ public class DeveloperController {
         System.out.print("Введите команду: ");
         command = scan.nextLine();
 
+        menu(command);
+
+    }
+
+    private void menu(String command) {
+
         if (command.equalsIgnoreCase("show")) {
             dv.show();
             execute();
@@ -38,8 +44,8 @@ public class DeveloperController {
         } else if (command.equalsIgnoreCase("create")) {
             addDev();
             execute();
-        } else if (command.equalsIgnoreCase("delete")) {
-            deleteObj();
+        } else if (command.equalsIgnoreCase("remove")) {
+            removeObj();
             execute();
         } else if (command.equalsIgnoreCase("return")) {
             return;
@@ -50,7 +56,7 @@ public class DeveloperController {
 
     }
 
-    private void deleteObj() {
+    private void removeObj() {
 
         Scanner scan = new Scanner(System.in);
 
@@ -60,7 +66,7 @@ public class DeveloperController {
         dr.removeById(id);
     }
 
-    private void deleteObj(Developer dev) {
+    private void removeObj(Developer dev) {
         dr.removeById(dev.getId());
     }
 
@@ -99,19 +105,23 @@ public class DeveloperController {
         scan = new Scanner(System.in);
         command = scan.nextLine();
 
+        menuForObj(dev, command);
+
+    }
+
+    private void menuForObj(Developer dev, String command) {
         if (command.equalsIgnoreCase("add skill"))
             addSkill(dev);
-        else if (command.equalsIgnoreCase("remove skill"))
+        else if (command.equalsIgnoreCase("delete skill"))
             removeSkill(dev);
         else if (command.equalsIgnoreCase("change fn"))
             changeFirstName(dev);
         else if (command.equalsIgnoreCase("change ln"))
             changeLastName(dev);
-        else if (command.equalsIgnoreCase("delete"))
-            deleteObj(dev);
+        else if (command.equalsIgnoreCase("remove"))
+            removeObj(dev);
         else
             System.out.println("Команда не найдена!");
-
     }
 
     private void changeLastName(Developer dev) {

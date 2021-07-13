@@ -15,8 +15,8 @@ public class DeveloperView {
         System.out.println("\t1. show (показать список разработчиков)");
         System.out.println("\t2. get (перейти к разработчику по идентификатору)");
         System.out.println("\t3. create (создать разработчика)");
-        System.out.println("\t4. delete (удалить разработчика по идентефикатору)");
-        System.out.println("\t5. return (вернуться в прошлое меню)");
+        System.out.println("\t4. remove (удалить разработчика по идентефикатору)");
+        System.out.println("\t5. return (вернуться в главное меню)");
     }
 
     public void show() {
@@ -42,10 +42,10 @@ public class DeveloperView {
     public void showObjectActions() {
         System.out.println("Действия над объектом:");
         System.out.println("\tadd skill (добавить навык)");
-        System.out.println("\tremove skill (удалить навык)");
+        System.out.println("\tdelete skill (удалить навык)");
         System.out.println("\tchange fn (изменить имя)");
         System.out.println("\tchange ln (изменить фамилию)");
-        System.out.println("\tdelete (удалить объект)");
+        System.out.println("\tremove (удалить объект)");
     }
 
 }
