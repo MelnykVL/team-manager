@@ -18,18 +18,6 @@ public class JavaIOTeamRepositoryImpl implements TeamRepository {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private final File file = new File("src/main/resources/teams.json");
 
-    public JavaIOTeamRepositoryImpl() {
-
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
     @Override
     public Team getById(Integer id) {
         return getAll().stream().filter(n -> n.getId() == id).findAny().orElse(null);

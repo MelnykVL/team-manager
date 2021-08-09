@@ -4,6 +4,8 @@ import com.melnykvl.teammanager.controller.DeveloperController;
 import com.melnykvl.teammanager.controller.SkillController;
 import com.melnykvl.teammanager.controller.TeamController;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -15,6 +17,8 @@ public class Main {
 
         String command = "";
         Scanner scan = new Scanner(System.in);
+
+        checkFile();
 
         while (true) {
 
@@ -37,6 +41,38 @@ public class Main {
             else
                 System.out.println("Команда не найдена");
 
+        }
+
+    }
+
+    private static void checkFile() {
+
+        final File skillsFile = new File("src/main/resources/skills.json");
+        final File developersFile = new File("src/main/resources/developers.json");
+        final File teamsFile = new File("src/main/resources/teams.json");
+
+        if (!skillsFile.exists()) {
+            try {
+                skillsFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (!developersFile.exists()) {
+            try {
+                developersFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (!teamsFile.exists()) {
+            try {
+                teamsFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }

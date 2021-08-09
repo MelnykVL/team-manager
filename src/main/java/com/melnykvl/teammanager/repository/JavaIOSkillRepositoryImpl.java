@@ -22,18 +22,6 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private final File file = new File("src/main/resources/skills.json");
 
-    public JavaIOSkillRepositoryImpl() {
-
-        if (file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
     @Override
     public Skill getById(Integer id) {
         return getAll().stream().filter(n -> n.getId() == id).findAny().orElse(null);

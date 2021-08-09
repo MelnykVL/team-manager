@@ -21,18 +21,6 @@ public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private final File file = new File("src/main/resources/developers.json");
 
-    public JavaIODeveloperRepositoryImpl() {
-
-        if (file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
-
     @Override
     public Developer getById(Integer id) {
         return getAll().stream().filter(n -> n.getId() == id).findAny().orElse(null);
