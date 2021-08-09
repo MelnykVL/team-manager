@@ -1,11 +1,11 @@
 package com.melnykvl.teammanager.controller;
 
-import com.melnykvl.teammanager.model.Developer;
 import com.melnykvl.teammanager.model.Team;
 import com.melnykvl.teammanager.model.TeamStatus;
 import com.melnykvl.teammanager.repository.*;
+import com.melnykvl.teammanager.repository.implementation.JavaIODeveloperRepositoryImpl;
+import com.melnykvl.teammanager.repository.implementation.JavaIOTeamRepositoryImpl;
 import com.melnykvl.teammanager.view.DeveloperView;
-import com.melnykvl.teammanager.view.SkillView;
 import com.melnykvl.teammanager.view.TeamView;
 
 import java.util.Scanner;

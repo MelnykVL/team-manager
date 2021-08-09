@@ -1,8 +1,7 @@
 package com.melnykvl.teammanager.view;
 
-import com.melnykvl.teammanager.model.Developer;
 import com.melnykvl.teammanager.model.Team;
-import com.melnykvl.teammanager.repository.JavaIOTeamRepositoryImpl;
+import com.melnykvl.teammanager.repository.implementation.JavaIOTeamRepositoryImpl;
 import com.melnykvl.teammanager.repository.TeamRepository;
 
 public class TeamView {

@@ -1,7 +1,7 @@
 package com.melnykvl.teammanager.view;
 
 import com.melnykvl.teammanager.model.Skill;
-import com.melnykvl.teammanager.repository.JavaIOSkillRepositoryImpl;
+import com.melnykvl.teammanager.repository.implementation.JavaIOSkillRepositoryImpl;
 import com.melnykvl.teammanager.repository.SkillRepository;
 
 import java.util.List;

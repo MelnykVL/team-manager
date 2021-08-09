@@ -2,7 +2,7 @@ package com.melnykvl.teammanager.view;
 
 import com.melnykvl.teammanager.model.Developer;
 import com.melnykvl.teammanager.repository.DeveloperRepository;
-import com.melnykvl.teammanager.repository.JavaIODeveloperRepositoryImpl;
+import com.melnykvl.teammanager.repository.implementation.JavaIODeveloperRepositoryImpl;
 
 import java.util.List;
 

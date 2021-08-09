@@ -1,10 +1,10 @@
-package com.melnykvl.teammanager.repository;
+package com.melnykvl.teammanager.repository.implementation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.melnykvl.teammanager.model.Skill;
-import com.melnykvl.teammanager.model.Team;
+import com.melnykvl.teammanager.model.Developer;
+import com.melnykvl.teammanager.repository.DeveloperRepository;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,54 +16,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class JavaIOSkillRepositoryImpl implements SkillRepository {
+public class JavaIODeveloperRepositoryImpl implements DeveloperRepository {
 
     private static int counter;
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
-    private final File file = new File("src/main/resources/skills.json");
+    private final File file = new File("src/main/resources/developers.json");
 
     @Override
-    public Skill getById(Integer id) {
+    public Developer getById(Integer id) {
         return getAll().stream().filter(n -> n.getId() == id).findAny().orElse(null);
     }
 
     @Override
-    public Skill add(Skill skill) {
+    public Developer add(Developer developer) {
 
-        List<Skill> list = getAll();
+        List<Developer> list = getAll();
 
         counter = list.size() != 0 ? list.get(list.size()-1).getId() : 0;
 
-        skill.setId(++counter);
+        developer.setId(++counter);
 
-        list.add(skill);
+        list.add(developer);
 
         rewriteFile(list);
 
-        return skill;
+        return developer;
+
     }
 
     @Override
-    public Skill update(Skill skill) {
+    public Developer update(Developer dev) {
 
-        List<Skill> list = getAll();
+        List<Developer> list = getAll();
 
-        Skill temp = list.stream().filter(n -> n.getId() == skill.getId()).findAny().get();
+        Developer temp = list.stream().filter(n -> n.getId() == dev.getId()).findAny().orElse(null);
 
-        list.set(list.indexOf(temp), skill);
+        list.set(list.indexOf(temp), dev);
 
         rewriteFile(list);
 
-        return skill;
+        return null;
 
     }
 
     @Override
     public void removeById(Integer id) {
 
-        List<Skill> list = getAll();
+        List<Developer> list = getAll();
 
-        Skill temp = list.stream().filter(n -> n.getId() == id).findAny().orElse(null);
+        Developer temp = list.stream().filter(n -> n.getId() == id).findAny().orElse(null);
 
         list.remove(temp);
 
@@ -72,14 +73,14 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
     }
 
     @Override
-    public List<Skill> getAll() {
+    public List<Developer> getAll() {
 
-        Optional<List<Skill>> opt = Optional.empty();
-        Type listTeamType = new TypeToken<ArrayList<Skill>>(){}.getType();
+        Optional<List<Developer>> opt = Optional.empty();
+        Type listDeveloperType = new TypeToken<ArrayList<Developer>>(){}.getType();
 
         try (Reader reader = Files.newBufferedReader(file.toPath())) {
 
-            opt = Optional.ofNullable(gson.fromJson(reader, listTeamType));
+            opt = Optional.ofNullable(gson.fromJson(reader, listDeveloperType));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,15 +90,14 @@ public class JavaIOSkillRepositoryImpl implements SkillRepository {
 
     }
 
-    private void rewriteFile(List<Skill> list) {
+    private void rewriteFile(List<Developer> list) {
 
         try (Writer writer = Files.newBufferedWriter(file.toPath())) {
-
             gson.toJson(list, writer);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
 }

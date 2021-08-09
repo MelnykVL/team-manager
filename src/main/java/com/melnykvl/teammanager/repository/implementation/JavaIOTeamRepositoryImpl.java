@@ -1,9 +1,10 @@
-package com.melnykvl.teammanager.repository;
+package com.melnykvl.teammanager.repository.implementation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.melnykvl.teammanager.model.Team;
+import com.melnykvl.teammanager.repository.TeamRepository;
 
 import java.io.*;
 import java.lang.reflect.Type;
